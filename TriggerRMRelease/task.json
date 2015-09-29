@@ -1,0 +1,87 @@
+{
+  "id": "0ff71c70-6683-11e5-b7cf-2fc4552d0caa",
+  "name": "TriggerRMRelease",
+  "friendlyName": "Trigger vNext Release in RM",
+  "description": "Triggers a new vNext release in Release Management",
+  "author": "Sharpy108",
+  "helpMarkDown": "Use this Step to trigger a vNext release in Release Management, PowerShell deployment only",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "TriggerRMRelease $(message)",
+  "inputs": [
+  
+    {
+      "name": "teamProject",
+        "type": "string",
+        "label": "Team Project",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The team project that holds the code to be built"
+    },
+    {
+        "name": "targetStageName",
+        "type": "string",
+        "label": "Target Stage",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The target stage for the release."
+    },
+    {
+        "name": "rmserver",
+        "type": "string",
+        "label": "Release Management Server",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Release Management Server"
+    },
+    {
+        "name": "port",
+        "type": "string",
+        "label": "Release Management Server Connection Port",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Release Management Server Port Number"
+    },
+    {
+        "name": "userName",
+        "type": "string",
+        "label": "User name that will connect to RM",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "User must have create new release rights"
+    },
+    {
+        "name": "password",
+        "type": "string",
+        "label": "RM users password",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "RM users password to access RM"
+    },
+    {
+        "name": "Domain",
+        "type": "string",
+        "label": "Domain for the User connecting to RM",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Domain for the User connecting to RM"
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\InitiateRmRelease.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
